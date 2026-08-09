@@ -30,7 +30,7 @@ existing_indexes=[i["name"] for i in pc.list_indexes()]
 if PINECONE_INDEX_NAME not in existing_indexes:
     pc.create_index(
         name=PINECONE_INDEX_NAME,
-        dimension=768,
+        dimension=3072,
         metric="dotproduct",
         spec=spec
     )
@@ -43,7 +43,7 @@ index=pc.Index(PINECONE_INDEX_NAME)
 # load,split,embed and upsert pdf docs content
 
 def load_vectorstore(uploaded_files):
-    embed_model = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+    embed_model = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
     file_paths = []
 
     for file in uploaded_files:
