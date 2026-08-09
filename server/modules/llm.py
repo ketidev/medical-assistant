@@ -1,8 +1,8 @@
 from langchain_core.prompts import PromptTemplate
-from langchain.chains import RetrievalQA
+from langchain_core.runnables import RunnablePassthrough
 from langchain_groq import ChatGroq
-import os
 from dotenv import load_dotenv
+import os
 
 
 load_dotenv()
