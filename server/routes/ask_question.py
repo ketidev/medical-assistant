@@ -25,6 +25,8 @@ async def ask_question(question: str = Form(...)):
         embedded_query = embed_model.embed_query(question)
         res = index.query(vector=embedded_query, top_k=3, include_metadata=True)
 
+        logger.info(f"Pinecone matches: {res['matches']}")
+
         docs = [
             Document(
                 page_content=match["metadata"].get("text", ""),
